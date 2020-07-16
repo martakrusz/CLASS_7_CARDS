@@ -7,6 +7,8 @@ class Contact:
         self.company = company
         self.position = position
         self.email = email
+    def __str__(self):
+        return f'{self.first_name} {self.last_name} {self.email}'    
 
 fake = Faker()
 
@@ -17,4 +19,8 @@ for _ in range(5):
                     position = fake.job(), 
                     email = fake.email())
     print(person.first_name, person.last_name, person.email, person.position)
+
+print(dir(Contact))
+
+
 
