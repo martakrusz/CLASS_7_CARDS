@@ -27,7 +27,21 @@ class Contact:
 
     def __gt__(self, other):
         return self.age > other.age
+    
+    def contact(self):
+        return f"Kontaktuję się z {self.first_name} {self.last_name}, position - {self.position}, email -  {self.email}"
 
+    @property
+    def name_len(self):
+        return sum([len(self.first_name), len(self.last_name)],1)
+"""
+    @name_len.setter
+    def name_len(self,value):
+       if value <= self.top_speed:
+           self._current_speed = value
+       else:
+           raise ValueError(f"Value {value} exceeds top speed of {self.top_speed}")
+"""
 fake = Faker()
 
 person1 = Contact(first_name = "Marta", 
@@ -55,6 +69,7 @@ by_age = sorted(persons,key=lambda Contact: Contact.age)
 by_first_name = sorted(persons,key=lambda Contact: Contact.first_name)
 by_last_name = sorted(persons,key=lambda Contact: Contact.last_name)
 
-print(by_age)
-print(by_first_name)
-print(by_last_name)
+#print(by_age)
+#print(by_first_name)
+#print(by_last_name)
+print(person1.name_len)
