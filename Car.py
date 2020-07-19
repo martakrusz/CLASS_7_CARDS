@@ -32,12 +32,30 @@ class Car:
        else:
            raise ValueError(f"Value {value} exceeds top speed of {self.top_speed}")
 
-class Truck(Car):
+class DieselEngine:
+    def tank(self, how_many = 100):
+        print(f"Adding {how_many} litres of Diesel")
+
+class PetroEngine:
+    def tank(self, how_many=20):
+        print(f"Adding {how_many} litres of Diesel") 
+
+class Manual:
+    def gearbox(self):
+        print(f"Manual gearbox")
+
+class Truck(Car, DieselEngine):
    def __init__(self, max_load, *args, **kwargs):
        super().__init__(*args, **kwargs)
        self.max_load = max_load
 
+class SportCar(Car, PetroEngine, Manual):
+    pass         
+
 car = Car(make="BMW", model_name="3", top_speed=250, color="red")
 print(car.current_speed)
 truck = Truck(make="Mercedes", model_name="Vito", top_speed=220, color= "White", max_load=1200)
-print(truck.make)
+porshe = SportCar(make="Porshe", model_name="911", top_speed=300, color= "Black")
+truck.tank()
+porshe.tank()
+porshe.gearbox()
