@@ -1,5 +1,7 @@
 from faker import Faker
 
+print("CARDS - Base&Bussines - enjoy!\n")
+
 class BaseContact:
     def __init__(self, first_name, last_name, email, phone):
         self.first_name = first_name
@@ -25,9 +27,6 @@ class BusinessContact(BaseContact):
         self.company = company
         self.position = position
     
-    @property
-    def name_len(self):
-        return sum([len(self.first_name), len(self.last_name)],1)
 
     def contact(self):
         return f'Wybieram numer +48 {self.busines_phone} i dzwonię do {self.first_name} {self.last_name}'
@@ -42,10 +41,7 @@ for _ in range(5):
                     phone = fake.random_int(min=100000000, max=999999999)
                     )
 
-
-def create_contacts():
-    number = int(input("Input number of cards: "))
-    card = int(input("Input kidn of card for private input 1, for busines input 2: "))
+def create_contacts(number, card):
     if card == 1:
         for _ in range(number):
             base = BaseContact(first_name = fake.first_name(), 
@@ -66,5 +62,7 @@ def create_contacts():
                     )
             print(f'Wizytówka biznesowa {business.first_name} {business.last_name} {business.email} {business.name_len} {business.busines_phone}')
 
+num = fake.random_int(min=1, max=10)
+card_type = fake.random_int(min=1, max=2)
 
-create_contacts()
+create_contacts(num,card_type)
